@@ -7,6 +7,8 @@ import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
 
+import { UserItem } from "./user-item";
+
 export function Navigation() {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const pathname = usePathname();
@@ -119,7 +121,7 @@ export function Navigation() {
           <ChevronsLeft className="h-6 w-6" />
         </div>
         <div>
-          <p>Action Items</p>
+          <UserItem />
         </div>
         <div className="mt-4">
           <p>Documents</p>
