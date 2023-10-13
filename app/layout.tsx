@@ -35,7 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(font.className, "dark:bg-[#161616]")}>
+      <body className={cn(font.className, "dark:bg-custom_dark")}>
         <ConvexClientProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
             {children}
