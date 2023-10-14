@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Toaster } from "sonner";
 
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/providers/theme-provider";
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body className={cn(font.className, "dark:bg-custom_dark")}>
         <ConvexClientProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <Toaster position="bottom-center" />
             {children}
           </ThemeProvider>
         </ConvexClientProvider>
