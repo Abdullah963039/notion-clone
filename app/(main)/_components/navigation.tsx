@@ -22,6 +22,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useSearch } from "@/hooks/use-search";
+import { useSettings } from "@/hooks/use-settings";
 
 import { UserItem } from "./user-item";
 import { Item } from "./item";
@@ -29,6 +31,8 @@ import { DocumentList } from "./document-list";
 import { TrashBox } from "./trash-box";
 
 export function Navigation() {
+  const onOpenSearchDialog = useSearch((store) => store.onOpen);
+  const onOpenSettingsDialog = useSettings((store) => store.onOpen);
   const isMobile = useMediaQuery("(max-width: 768px)");
   const pathname = usePathname();
 
@@ -153,8 +157,17 @@ export function Navigation() {
         </div>
         <div>
           <UserItem />
-          <Item onClick={() => {}} isSearch label="Search" icon={Search} />
-          <Item onClick={() => {}} label="Settings" icon={Settings} />
+          <Item
+            onClick={onOpenSearchDialog}
+            isSearch
+            label="Search"
+            icon={Search}
+          />
+          <Item
+            onClick={onOpenSettingsDialog}
+            label="Settings"
+            icon={Settings}
+          />
           <Item onClick={handleCreate} label="New page" icon={PlusCircle} />
         </div>
         <div className="mt-4">
