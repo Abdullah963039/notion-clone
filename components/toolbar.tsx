@@ -3,12 +3,13 @@
 import * as React from "react";
 import { useMutation } from "convex/react";
 import TextareaAutosize from "react-textarea-autosize";
+import { ImageIcon, Smile, X } from "lucide-react";
 
 import { IconPicker } from "@/components/icon-picker";
 import { Button } from "@/components/ui/button";
-import { ImageIcon, Smile, X } from "lucide-react";
 import { api } from "@/convex/_generated/api";
 import { Doc } from "@/convex/_generated/dataModel";
+import { useCoverImage } from "@/hooks/use-cover-image";
 
 interface ToolbarProps {
   initialData: Doc<"documents">;
@@ -22,6 +23,8 @@ export function Toolbar({ initialData, preview }: ToolbarProps) {
 
   const update = useMutation(api.documents.update);
   const removeIcon = useMutation(api.documents.removeIcon);
+
+  const onOpenCoverImage = useCoverImage((store) => store.onOpen);
 
   const enableInput = () => {
     if (preview) return;
@@ -99,7 +102,7 @@ export function Toolbar({ initialData, preview }: ToolbarProps) {
           <Button
             variant="outline"
             size="sm"
-            onClick={() => {}}
+            onClick={onOpenCoverImage}
             className="text-muted-foreground text-xs"
           >
             <ImageIcon className="h-4 w-4 mr-2" />
