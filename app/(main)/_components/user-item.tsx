@@ -29,7 +29,7 @@ export function UserItem() {
                 <AvatarImage src={user?.imageUrl} />
               </Avatar>
               <span className="text-start font-medium line-clamp-1">
-                {user?.firstName}'s Jotion
+                {user?.firstName}&apos;s Jotion
               </span>
             </div>
             <ChevronsLeftRight className="rotate-90 ml-2 text-muted-foreground h-4 w-4" />
@@ -53,7 +53,7 @@ export function UserItem() {
               </div>
               <div className="space-y-1">
                 <p className="text-sm line-clamp-1">
-                  {user?.fullName}'s Jotion
+                  {user?.fullName}&apos;s Jotion
                 </p>
               </div>
             </div>
