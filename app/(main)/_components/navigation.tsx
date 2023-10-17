@@ -12,7 +12,7 @@ import {
   Trash,
 } from "lucide-react";
 import { useMediaQuery } from "usehooks-ts";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { useMutation } from "convex/react";
 
 import { cn } from "@/lib/utils";
@@ -37,6 +37,7 @@ export function Navigation() {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const params = useParams();
   const pathname = usePathname();
+  const router = useRouter();
 
   const create = useMutation(api.documents.create);
 
@@ -112,7 +113,9 @@ export function Navigation() {
   }
 
   function handleCreate() {
-    const promise = create({ title: "Untitled" });
+    const promise = create({ title: "Untitled" }).then((documentId) =>
+      router.push(`/documents/${documentId}`)
+    );
 
     toast.promise(promise, {
       loading: "Creating a new note",
